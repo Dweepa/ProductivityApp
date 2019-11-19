@@ -25,8 +25,8 @@ mail_settings = {
 app.config.update(mail_settings)
 mail = Mail(app)
 
-app.config['MONGO_DBNAME'] = 'student'
-app.config['MONGO_URI'] = "mongodb://localhost:27017/student"
+app.config['MONGO_DBNAME'] = 'SE_DB'
+app.config['MONGO_URI'] = "mongodb://localhost:27017/SE_DB"
 CORS(app)
 mongo = PyMongo(app)
 
@@ -56,6 +56,7 @@ def schedule_to_print():
     return "job details: %s" % job
 
 
+
 def notification(output,body):
     print(output)
     with app.app_context():
@@ -66,3 +67,4 @@ def notification(output,body):
 
 if __name__ == '__main__':
     app.run(debug=True, port=2000)
+

@@ -63,6 +63,7 @@ class NewComponent extends React.Component {
         .then(res=>res.json())
         .then(res => {
         console.log(res);
+
         })
     }
 
@@ -122,20 +123,21 @@ function EventList (props) {
   <div className='p-0'>
     <p className='bg-primary text-white p-2 rounded text-center'>{number.event.type}</p>
     <div className="row text-center">
-        <div className='text-info col-sm'>
-            <p className='text-secondary'>Course</p>
+        <div className='text-info col-sm'  style={{"fontSize":"12.5px","margin-left":"0px"}}>
+            <p className='text-secondary' style={{"marginBottom":"1px"}}>Course</p>
             <p> {number.event.course}</p>
         </div>
-        <div className='text-info col-sm'>
-            <p className='text-secondary'>Section</p>
+        <div className='text-info col-sm' style={{"fontSize":"12.5px","margin-left":"0px"}}>
+            <p className='text-secondary' style={{"marginBottom":"1px"}}>Section</p>
             <p>{number.event.section}</p>
         </div>
-        <div className='text-info col-sm'>
-            <p className='text-secondary'>Team</p>
+        <div className='text-info col-sm' style={{"fontSize":"12.5px","margin-left":"0px"}}>
+            <p className='text-secondary' style={{"marginBottom":"1px"}}>Team</p>
             <p> {number.event.team}</p>
         </div>
     </div>
     <p className='bg-light text-muted p-2'>{number.event.description}</p>
+    <hr style={{"marginTop":"25px","marginBottom":"25px"}}/>
   </div>
   );
   return (
@@ -415,67 +417,66 @@ export default class Calendar extends React.Component {
 
     return (
       <div className="row">
-      <div className = "col-sm p-4">
-      <div className="tail-datetime-calendar">
-        <div className="calendar-navi">
-          <span
-            onClick={e => {
-              this.onPrev();
-            }}
-            className="calendar-button button-prev"
-          />
-          {!this.state.showMonthTable && (
-            <span
-              onClick={e => {
-                this.showMonth();
-              }}
-              className="calendar-label"
-            >
-              {this.month()}
-            </span>
-          )}
-          <span className="calendar-label" onClick={e => this.showYearTable()}>
-            {this.year()}
-          </span>
-           <span
-          onClick={e => {
-            this.onNext();
-          }}
-          className="calendar-button button-next"
-        />
-        </div>
+          <div className = "col-sm p-5">
+              <div className="tail-datetime-calendar">
+                <div className="calendar-navi">
+                  <span
+                    onClick={e => {
+                      this.onPrev();
+                    }}
+                    className="calendar-button button-prev"
+                  />
+                  {!this.state.showMonthTable && (
+                    <span
+                      onClick={e => {
+                        this.showMonth();
+                      }}
+                      className="calendar-label"
+                    >
+                      {this.month()}
+                    </span>
+                  )}
+                  <span className="calendar-label" onClick={e => this.showYearTable()}>
+                    {this.year()}
+                  </span>
+                   <span
+                  onClick={e => {
+                    this.onNext();
+                  }}
+                  className="calendar-button button-next"
+                />
+                </div>
 
-        <div className="calendar-date">
-          {this.state.showYearTable && <this.YearTable props={this.year()} />}
-          {this.state.showMonthTable && (
-            <this.MonthList data={moment.months()} />
-          )}
-        </div>
+                <div className="calendar-date">
+                  {this.state.showYearTable && <this.YearTable props={this.year()} />}
+                  {this.state.showMonthTable && (
+                    <this.MonthList data={moment.months()} />
+                  )}
+                </div>
 
-        {this.state.showDateTable && (
-          <div className="calendar-date">
-            <table className="calendar-day">
-              <thead>
-                <tr>{weekdayshortname}</tr>
-              </thead>
-              <tbody>{daysinmonth}</tbody>
-            </table>
+                {this.state.showDateTable && (
+                  <div className="calendar-date">
+                    <table className="calendar-day">
+                      <thead>
+                        <tr>{weekdayshortname}</tr>
+                      </thead>
+                      <tbody>{daysinmonth}</tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
           </div>
-        )}
-      </div>
-      </div>
 
-
-
-         <div className = 'col-sm container p-5 '>
-          {this.state.clicked ? ( <h1 className='text-center'>{this.state.selectedDay} {this.state.selectedMonth} {this.state.selectedYear}</h1>) : null}
-         {this.state.data? <EventList className='p-0 m-1' data={this.state.data}/>:null}
+         <div className="col-sm container p-5" style={{"marginTop":"0px","marginLeft":"150px"}}>
+          {this.state.clicked ? ( <div className="jumbotron p-5"><h1 className='text-center'>{this.state.selectedDay} {this.state.selectedMonth} {this.state.selectedYear}</h1></div>) : null}
+         {this.state.data? <div className="jumbotron p-5"> <EventList className='p-0 m-1' data={this.state.data}/> </div>:null}
          </div>
 
-         <div className = 'col-sm container p-5 '>
-          {this.state.clicked ? (<NewComponent d={this.state.selectedDay} m={this.state.selectedMonth} y={this.state.selectedYear}/>):null}
+         <div className = 'col-sm container p-5' style={{"marginTop":"0px"}}>
+         <div style={{"position":"fixed"}}>
+          {this.state.clicked ? (<NewComponent d={this.state.selectedDay} m={this.state.selectedMonth} y={this.state.selectedYear} />):null}
          </div>
-
+         </div>
     </div>
     );
   }

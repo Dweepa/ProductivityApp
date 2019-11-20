@@ -35,8 +35,8 @@ mail_settings = {
 app.config.update(mail_settings)
 mail = Mail(app)
 
-app.config['MONGO_DBNAME'] = 'student'
-app.config['MONGO_URI'] = "mongodb://localhost:27017/student"
+app.config['MONGO_DBNAME'] = 'calendar'
+app.config['MONGO_URI'] = "mongodb://localhost:27017/calendar"
 CORS(app)
 mongo = PyMongo(app)
 
@@ -104,7 +104,7 @@ def add():
     req_dict['section'] = req['section']
     req_dict['body'] = req['description']
     date = str(req['y']) + "-" + str(req['m']) + "-" + str(req['d']) + " " + "08:00:00"
-    print(date)
+    # print(date)
     req_dict['time'] = (datetime.strptime(date, '%Y-%B-%d %H:%M:%S')).strftime("%Y-%m-%d %H:%M:%S")
     print(schedule_to_print(req_dict))
     # op = list(calendar.find({"_id":uid}))

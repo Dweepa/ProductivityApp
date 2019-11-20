@@ -13,7 +13,9 @@
 .tail-datetime-calendar {
   width: 245px;
   height: auto;
-  margin: 15px;
+  margin-left: 205px;
+  margin-right: 50px;
+  margin-top: 0px;
   padding: 0;
   display: block;
   overflow: hidden;
@@ -25,6 +27,7 @@
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3125);
   border-radius: 3px;
   -webkit-border-radius: 3px;
+  position: fixed;
 }
 .tail-datetime-calendar:after {
   clear: both;

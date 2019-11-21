@@ -124,6 +124,9 @@ def pdf_gen(list1,list2,list3):
 def random_num_gen(n):
     rlist = random.sample(range(n),5)
     rlist = [x+1 for x in rlist]
+    return rlistdef random_num_gen(n):
+    rlist = random.sample(range(n),5)
+    rlist = [x+1 for x in rlist]
     return rlist
 
 def mainwin():

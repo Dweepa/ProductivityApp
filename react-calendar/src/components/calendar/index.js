@@ -473,7 +473,7 @@ export default class Calendar extends React.Component {
          </div>
 
          <div className = 'col-sm container p-5' style={{"marginTop":"0px"}}>
-         <div style={{"position":"fixed"}}>
+         <div style={{"marginRight":"80px", "margin-Right":"0px","position":"fixed"}}>
           {this.state.clicked ? (<NewComponent d={this.state.selectedDay} m={this.state.selectedMonth} y={this.state.selectedYear} />):null}
          </div>
          </div>

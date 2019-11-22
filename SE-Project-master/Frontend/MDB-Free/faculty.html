@@ -62,14 +62,14 @@
                   <h6 id="time" class="text-muted"></h6>
                 </div>
                 <div class="card-body text-center font-weight-light">
-                    <button onclick="window.location.href = 'http://localhost:3000'" class="btn btn-success rounded-pill"><i class="fas fa-cog"></i> View Calendar
+                    <button onclick="window.location.href = 'http://localhost:4000'" class="btn btn-success rounded-pill"><i class="fas fa-cog"></i> View Calendar
                     </button>
                 </div>
             </div>
             <div class="card shadow-none">
                 <div class="card-body text-center font-weight-light">
                     <div class="accordion" id="accordionCourse">
-                        <span><i class="fas fa-book"></i> COURSES <b>24/100</b> </span>
+                        <span><i class="fas fa-book"></i> COURSES <b>2/6</b> </span>
                         <div class="progress mt-2 mb-2">
                             <div class="progress-bar" role="progressbar" style="width: 24%" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
@@ -140,7 +140,21 @@
             <div class="card shadow-none">
                 <div class="card-body text-center font-weight-light">
                     <i class="fas fa-lg fa-project-diagram"></i> PROJECTS MANAGER
-                    <button class="btn btn-info rounded-pill"><i class="far fa-eye"></i> View
+                    <button onClick="window.location.href='file:///Users/dweepa/Documents/SE/SE-Project-master/Frontend/MDB-Free/FacProject.html'" class="btn btn-info rounded-pill"><i class="far fa-eye"></i> View
+                    </button>
+                </div>
+            </div>
+            <div class="card shadow-none">
+                <div class="card-body text-center font-weight-light">
+                    <i class="fas fa-lg fa-align-justify"></i> QUESTION PAPER GENERATOR
+                    <button onClick="window.location.href='http://localhost:5002'" class="btn btn-danger rounded-pill"><i class="far fa-eye"></i> View
+                    </button>
+                </div>
+            </div>
+            <div class="card shadow-none">
+                <div class="card-body text-center font-weight-light">
+                    <i class="fas fa-lg fa-users"></i> FORUMS <br>
+                    <button onClick="window.location.href='http://localhost:6006'" class="btn btn-warning rounded-pill yellow"><i class="far fa-eye"></i> View
                     </button>
                 </div>
             </div>
@@ -285,10 +299,10 @@
 
         var d = new Date();
         var d1=JSON.stringify(d);
-        d1.split("GMT");
+        d1.split("IST");
         var d2=d1.split("T");
-        document.getElementById("date").innerHTML=d2[0];
-        document.getElementById("time").innerHTML=d2[1];
+        document.getElementById("date").innerHTML=d2[0].substring(1,d2[0].length);
+        //document.getElementById("time").innerHTML=d2[1];
 
         const list_faculties = document.getElementById("faclist");
         const list_courses = document.getElementById("courselist");

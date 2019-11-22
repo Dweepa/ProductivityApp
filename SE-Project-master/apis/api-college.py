@@ -9,8 +9,8 @@ from bson.objectid import ObjectId
 from flask import jsonify, request
 from werkzeug import generate_password_hash, check_password_hash
 app = Flask(__name__)
-app.config['MONGO_DBNAME'] = 'SE_DB'
-app.config["MONGO_URI"] = "mongodb://localhost:27017/SE_DB"
+app.config['MONGO_DBNAME'] = 'calendar'
+app.config["MONGO_URI"] = "mongodb://localhost/calendar"
 mongo = PyMongo(app)
 
 

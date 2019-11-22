@@ -6,6 +6,7 @@ from bson import json_util
 import base64
 import datetime
 from flask_cors import CORS
+import os
 
 from flask import Flask, request
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -26,8 +27,8 @@ mail_settings = {
     "MAIL_PORT": 465,
     "MAIL_USE_TLS": False,
     "MAIL_USE_SSL": True,
-    "MAIL_USERNAME":"pesuprod@gmail.com",
-    "MAIL_PASSWORD":"pesu@123"
+    "MAIL_USERNAME": "pesuprod@gmail.com",
+    "MAIL_PASSWORD": "pesu@123"
     # "MAIL_USERNAME": "xyz41607@gmail.com",
     # "MAIL_PASSWORD": "abcxyz12345"
 }
@@ -62,16 +63,17 @@ def schedule_to_print(data):
     date_time = datetime.strptime(str(time), '%Y-%m-%d %H:%M:%S')
     print(date_time)
     print(output)
-    job = scheduler.add_job(notification, trigger='date', next_run_time=str(date_time), args=[output,body])
+    job = scheduler.add_job(notification, trigger='date', next_run_time=str(date_time), args=[output, body])
     return "job details: %s" % job
 
 
-def notification(output,body):
+def notification(output, body):
     print(output)
     with app.app_context():
         msg = Message(subject="Hello", sender=app.config.get("MAIL_USERNAME"), recipients=output,
-                      body="Today is the deadline for your assignment ! "+body)
+                      body="Today is the deadline for your assignment ! " + body)
         mail.send(msg)
+
 
 @app.route('/show/<date>/<month>/<year>', methods=['GET'])
 def show(date, month, year):
@@ -97,7 +99,8 @@ def add():
     event_dict = {'type': req['title'], 'course': req['course'],
                   'section': req['section'], 'team': req['team'],
                   'description': req['description']}
-    uid = calendar.insert({'D': int(req['d']), 'M': req['m'], 'Y': int(req['y']), 'event': event_dict})
+    uid = calendar.insert(
+        {'D': int(req['d']), 'M': req['m'], 'Y': int(req['y']), 'event': event_dict, 'status': 'pending'})
     print(uid)
 
     req_dict = dict()
@@ -110,6 +113,38 @@ def add():
     # op = list(calendar.find({"_id":uid}))
     return jsonify({"output": 'insert done'})
 
+
+@app.route('/statusupdate', methods=['PUT'])
+def status():
+    calendar = mongo.db.calendar
+    req = request.json
+    print(req)
+    print("list")
+    output = []
+    ev = req['event']
+    event_dict = {'type': ev['type'], 'course': ev['course'],
+                  'section': ev['section'], 'team': ev['team'],
+                  'description': ev['description']}
+    calendar.update({"D": req['D'], "M": req['M'], "Y": req['Y'], "event": event_dict}, {"$set": {"status": "done"}})
+    return jsonify({"output": "done"})
+
+
+@app.route('/submissions/<course>', methods=['GET'])
+def getSubmissions(course):
+    calendar = mongo.db.calendar
+    course = course.split('_')
+    course = ' '.join(course)
+    print(course)
+    for i in calendar.find({"status":"done"}):
+        print(i['D'])
+    pending = calendar.find({"event.course": course, "status":"pending"}).count()
+    done = calendar.find({"event.course": course, "status":"done"}).count()
+    return jsonify(done)
+
+@app.route('/sentiment', methods=['GET'])
+def sent():
+    # t = os.system("python /Users/dweepa/Documents/SE/Sentiment-Analysis-Twitter/sentiment.py")
+    # return t
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5004, debug=True)

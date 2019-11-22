@@ -9,8 +9,8 @@ from bson.objectid import ObjectId
 from flask import jsonify, request
 from werkzeug import generate_password_hash, check_password_hash
 app = Flask(__name__)
-app.config['MONGO_DBNAME'] = 'SE_DB'
-app.config["MONGO_URI"] = "mongodb://localhost:27017/SE_DB"
+app.config['MONGO_DBNAME'] = 'calendar'
+app.config["MONGO_URI"] = "mongodb://localhost/calendar"
 mongo = PyMongo(app)
 
 
@@ -21,7 +21,6 @@ def not_found(error):
 
 
 #student related apis
-
 #Add student api
 @app.route('/api/v1/student', methods=['POST'])
 def add_student():
@@ -312,8 +311,8 @@ def list_pert_faculty(fcode):
 #List all event's status - faculty
 @app.route('/api/v1/status/faculty/allevents/<name>',methods=['GET'])
 def list_all_status_faculty(name):
-    faculty=mongo.db.faculty.find_one({'name':name})
-    status=mongo.db.status.find({'faculty':faculty})
+    #faculty=mongo.db.faculty.find_one({'name':name})
+    status=mongo.db.status.find({'faculty':name})
     resp=dumps(status)
     if resp!='[]':
         return resp
@@ -325,8 +324,8 @@ def list_all_status_faculty(name):
 #List all pending events -faculty
 @app.route('/api/v1/status/faculty/pendingevents/<name>',methods=['GET'])
 def list_pending_events_faculty(name):
-    faculty=mongo.db.faculty.find_one({'name':name})
-    status=mongo.db.status.find({'faculty':faculty,'status':'pending'})
+    #faculty=mongo.db.faculty.find_one({'name':name})
+    status=mongo.db.status.find({'faculty':name,'status':'pending'})
     resp=dumps(status)
     if resp!='[]':
         return resp
@@ -337,9 +336,9 @@ def list_pending_events_faculty(name):
 
 #List all submitted events - faculty
 @app.route('/api/v1/status/faculty/submittedevents/<name>',methods=['GET'])
-def list_submitted_events_faculty():
-    faculty=mongo.db.faculty.find_one({'name':name})
-    status=mongo.db.status.find({'faculty':faculty,'status':'submitted'})
+def list_submitted_events_faculty(name):
+    #faculty=mongo.db.faculty.find_one({'name':name})
+    status=mongo.db.status.find({'faculty':name,'status':'submitted'})
     resp=dumps(status)
     if resp!='[]':
         return resp
@@ -442,7 +441,7 @@ def event_submission():
     _faculty=_json['faculty']
     _content=_json['content']
     if _event and _course and _team and _faculty and _content and request.method=='PUT':
-        mongo.db.status.update_one({'_id':ObjectId(_id['$oid']) if '$oid' in _id else ObjectId(_id)},{'$set': {'event':{'type': _event,'course':_course,'section':_section,'team':_team,'description':_content}, 'faculty' : _faculty,'status' : 'submitted'}})
+        mongo.db.status.update_one({'_id':ObjectId(_id['$oi d']) if '$oid' in _id else ObjectId(_id)},{'$set': {'event':_event , 'course':_course , 'team': _team , 'faculty' : _faculty , 'content' : _content ,'status' : 'submitted'}})
         resp = jsonify('Status updated successfully!')
         resp.status_code = 200
         return resp
@@ -450,4 +449,4 @@ def event_submission():
         return not_found()
     
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5005, debug=True)

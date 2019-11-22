@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>STUDENT DASHBOARD</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+    <!-- MDB icon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="css/mdb.min.css">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body style="background-color: #eef7f7;">
+    <nav class="mb-0 navbar fixed-top navbar-expand-lg navbar-dark shadow-none" style="background-color: #32323f;">
+        <a class="navbar-brand" href="#">WEBSITE NAME</a>
+    </nav>
+    <nav class="mb-0 navbar navbar-expand-lg navbar-dark shadow-none" style="background-color: #32323f;">
+        <a class="navbar-brand" href="#">WEBSITE NAME</a>
+    </nav>
+    <div class="sidenav border-right">
+        <div class="card bg-white rounded-0">
+            <div class="card-body">
+                <i class="fas fa-lg fa-chalkboard-teacher"></i>
+                <span id="sname"></span>
+                <br>
+                <small id="susn" class="text-muted"></small>
+            </div>
+        </div>
+        <button id="home" class="btn btn-light active rounded-0 w-100 m-0 shadow-none"><i class="fas fa-home"></i>
+            Home</button>
+        <button class="btn btn-light rounded-0 w-100 m-0 shadow-none"><i class="fas fa-bell"></i> Notifications <span
+                class="badge bg-danger">1</span> </button>
+        <button id="logout1" class="btn btn-light rounded-0 w-100 m-0 shadow-none"><i class="fas fa-sign-out-alt"></i>
+            LOGOUT</button>
+    </div>
+    <div class="main">
+        <div class="card-columns" style="column-count:1;">
+            <div class="card shadow-none text-center font-weight-light text-muted p-2">
+                Student Dashboard
+            </div>
+        </div>
+        <div class="card-columns">
+            <div class="card shadow-none">
+                <div class="card-header font-weight-normal text-center bg-light">
+                    <i class="far fa-calendar-alt"></i> CALENDAR
+                </div>
+                <div class="card-body text-center font-weight-light bg-danger">
+                    <h2 id="date"><b></h2>
+                    <h6 id="time" class="text-muted"></h6>
+                </div>
+                <div class="card-body text-center font-weight-light">
+                    <button class="btn btn-success rounded-pill"><i class="fas fa-cog"></i> View Calendar</button>
+                </div>
+            </div>
+            <div class="card shadow-none">
+                <div class="card-body text-center font-weight-light">
+                    <div class="accordion" id="accordionCourse">
+                        <span><i class="fas fa-book"></i> COURSES</span>
+                        <div class="btn-group mt-2 flex-wrap" role="group">
+                            <button type="button" class="btn btn-primary"><i class="fas fa-list-alt"></i></button>
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#CourseCog"
+                                aria-expanded="true" aria-controls="CourseCog"><i class="fas fa-cog"></i></button>
+                            <button type="button" class="btn btn-success" data-toggle="collapse"
+                                data-target="#CourseSearch" aria-expanded="true" aria-controls="CourseSearch"><i
+                                    class="fas fa-search"></i></button>
+                            <button type="button" class="btn btn-danger" data-toggle="collapse"
+                                data-target="#CourseRemove" aria-expanded="true" aria-controls="CourseRemove"><i
+                                    class="fas fa-trash-alt"></i></button>
+                        </div>
+                        <div id="CourseCog" class="collapse" aria-labelledby="headingOne"
+                            data-parent="#accordionCourse">
+                            <div class="card-body text-center">
+                                <form>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="md-form mt-0">
+                                                <input type="text" id="course_code" class="form-control"
+                                                    placeholder="COURSE-CODE">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="md-form mt-0">
+                                                <input type="number" id="course_credits" min="0" max="10" value="1"
+                                                    class="form-control" placeholder="Credits">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="md-form mt-0">
+                                                <input type="text" id="course_name" class="form-control"
+                                                    placeholder="COURSE Name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-0">
+                                        <div class="col btn-group flex-wrap">
+                                            <button type="button" id="addcourse" class="btn btn-info"><i
+                                                    class="far fa-lg fa-edit"></i></button>
+                                            <button type="button" id="updatecourse" class="btn btn-warning"><i
+                                                    class="fas fa-lg fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="CourseSearch" class="collapse" aria-labelledby="headingOne"
+                            data-parent="#accordionCourse">
+                            <div class="card-body">
+                                <form>
+                                    <div class="flex-wrap md-form mt-0 mb-0">
+                                        <input type="text" class="form-control" id="searchcoursecode"
+                                            placeholder="COURSE-CODE">
+                                        <button type="button" id="searchcourse" class="btn btn-success"><i
+                                                class="fas fa-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="CourseRemove" class="collapse" aria-labelledby="headingOne"
+                            data-parent="#accordionCourse">
+                            <div class="card-body">
+                                <form>
+                                    <div class="md-form mt-0 mb-0">
+                                        <input type="text" class="form-control" id="removecoursecode"
+                                            placeholder="COURSE-CODE">
+                                        <div class="btn-group flex-wrap">
+                                            <button type="button" id="removecourse" class="btn btn-danger"><i
+                                                    class="fas fa-trash-alt"></i></button>
+                                            <button type="button" id="removeallcourses" class="btn btn-danger"><i
+                                                    class="fas fa-lg fa-eraser"></i> ALL
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow-none">
+                <div class="card-body text-center font-weight-light">
+                    <i class="fas fa-lg fa-project-diagram"></i> PROJECTS MANAGER
+                    <button class="btn btn-info rounded-pill"><i class="far fa-eye"></i> View</button>
+                </div>
+            </div>
+            <div class="card shadow-none">
+                <div class="accordion" id="accordionProfMan">
+                    <div class="card-body text-center font-weight-light mb-0">
+                        <i class="fas fa-lg fa-user-circle "></i> PROFILE
+                        <div class="btn-group flex-wrap" role="group">
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#ProfEdit"
+                                aria-expanded="true" aria-controls="ProfEdit"><i class="far fa-lg fa-edit"></i>
+                                EDIT</button>
+                            <button type="button" id="logout" class="btn btn-warning"><i
+                                    class="fas fa-lg fa-sign-out-alt"></i> LOGOUT</button>
+                        </div>
+                    </div>
+                    <div id="ProfEdit" class="collapse" aria-labelledby="headingOne" data-parent="#accordionProfMan">
+                        <div class="card-body text-center">
+                            <form>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="md-form mt-0">
+                                            <input type="text" class="form-control" id="studupdatename"
+                                                placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="md-form mt-0">
+                                            <input type="text" class="form-control" id="studupdateusn"
+                                                placeholder="USN">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="md-form mt-0">
+                                            <input type="password" class="form-control" id="studupdatepwd"
+                                                placeholder="New Password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" id="studupdate" class="btn btn-info"><i
+                                                class="far fa-lg fa-edit"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow-none">
+                <div class="card-body text-center font-weight-light">
+                    <div class="accordion" id="accordionEvent">
+                        <span><i class="fas fa-lg fa-calendar"></i> EVENTS</span><br>
+                        <div class="btn-group mt-2 flex-wrap" role="group">
+                            <button type="button" id="eventslist" class="btn btn-primary"><i
+                                    class="fas fa-list-alt"></i></i>
+                                LIST</button>
+                            <button type="button" id="submitevent" class="btn btn-info" data-toggle="collapse"
+                                data-target="#uploadEvent" aria-expanded="true" aria-controls="teamAdd"><i
+                                    class="fas fa-file-upload"></i></button>
+                            <button type="button" id="pendingeventslist" class="btn btn-warning"><i
+                                    class="far fa-clock"></i></button>
+                            <button type="button" id="submittedeventslist" class="btn btn-success"><i
+                                    class="fas fa-vote-yea"></i></button>
+                        </div>
+                        <div id="uploadEvent" class="collapse" aria-labelledby="headingOne"
+                            data-parent="#accordionEvent">
+                            <div class="card-body text-center">
+                                <form>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="md-form mt-0">
+                                                <input type="text" id="team_section" class="form-control"
+                                                    placeholder="Section">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="md-form mt-0">
+                                                <input type="number" id="team_number" min="0" max="10" value="1"
+                                                    class="form-control" placeholder="Team No.">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="md-form mt-0">
+                                                <input type="text" id="team_usn" class="form-control" placeholder="USN">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-0">
+                                        <div class="col btn-group flex-wrap">
+                                            <button type="button" id="addteam" class="btn btn-info"><i
+                                                    class="fas fa-lg fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow-none">
+                <div class="card-body text-center font-weight-light">
+                    <div class="accordion" id="accordionteam">
+                        <span><i class="fas fa-lg fa-users"></i> TEAM MANAGEMENT</span>
+                        <div class="btn-group flex-wrap" role="group">
+                            <button type="button" class="btn btn-info rounded-pill" data-toggle="collapse"
+                                data-target="#teamAdd" aria-expanded="true" aria-controls="teamAdd"><i
+                                    class="fas fa-plus"></i></button>
+                        </div>
+                        <div id="teamAdd" class="collapse" aria-labelledby="headingOne" data-parent="#accordionteam">
+                            <div class="card-body text-center">
+                                <form>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="md-form mt-0">
+                                                <input type="text" id="team_section" class="form-control"
+                                                    placeholder="Section">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="md-form mt-0">
+                                                <input type="number" id="team_number" min="0" max="10" value="1"
+                                                    class="form-control" placeholder="Team No.">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="md-form mt-0">
+                                                <input type="text" id="team_usn" class="form-control" placeholder="USN">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-0">
+                                        <div class="col btn-group flex-wrap">
+                                            <button type="button" id="createteam" class="btn btn-info"><i
+                                                    class="fas fa-lg fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="list" class="card-columns" style="column-count:1; display: none;">
+            <div class="card-header font-weight-normal text-center bg-light">
+                <i class="fas fa-list-alt"></i> LIST
+                <button class="btn btn-danger p-1 pr-2 pl-2" id="closelist"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        var d = new Date();
+        var d1 = JSON.stringify(d);
+        d1.split("GMT");
+        var d2 = d1.split("T");
+        document.getElementById("date").innerHTML = d2[0];
+        document.getElementById("time").innerHTML = d2[1];
+
+        var url = window.location.href;
+        console.log(url);
+
+        var res = url.split("#");
+        console.log(res);
+        console.log(typeof (res));
+
+        var usn = res[1];
+        console.log(usn);
+        console.log(typeof (usn));
+
+        const logout = document.getElementById('logout');
+        const logout1 = document.getElementById('logout1');
+
+        var name = document.getElementById("sname").textContent = usn;
+
+        const logout11 = () => {
+            setTimeout(window.location = 'index.html', 2000);
+        };
+        const logout12 = () => {
+            setTimeout(window.location = 'index.html', 2000);
+        };
+
+        logout.addEventListener('click', logout11);
+        logout1.addEventListener('click', logout12);
+        //home.addEventListener('click',home11);
+
+        const add_course = document.getElementById("addcourse"); //
+        const update_student = document.getElementById("studupdate"); //
+        const remove_all_courses = document.getElementById("removeallcourses"); //
+        const update_course = document.getElementById("updatecourse"); //
+        const search_course = document.getElementById("searchcourse"); //
+        const remove_course = document.getElementById("removecourse"); //
+        const list_events = document.getElementById("eventslist"); //
+        const list_pending_events = document.getElementById("pendingeventslist"); //
+        const list_submitted_events = document.getElementById("submittedeventslist"); //
+        const create_team = document.getElementById("createteam"); //
+        const submit_event = document.getElementById("submitevent"); //
+
+        const sendHttpRequest = (method, url, data) => {
+            return fetch(url, {
+                method: method,
+                body: JSON.stringify(data),
+                headers: data ? {
+                    "Content-Type": "application/json"
+                } : {}
+            }).then(response => {
+                if (response.status >= 400) {
+                    response.json().then(errResData => {
+                        const error = new Error("something went wrong!");
+                        error.data = errResData;
+                        throw error;
+                    });
+                }
+                return response.json();
+            });
+        };
+
+        sendHttpRequest('GET', 'http://127.0.0.1:5000/api/v1/student/' + usn)
+            .then(responseData => {
+                console.log(responseData);
+                console.log(typeof (responseData));
+                var usn1 = document.getElementById("susn").textContent = responseData.name;
+            });
+
+        //Update Student
+        const updateStudent = () => {
+            sendHttpRequest("PUT", "http://127.0.0.1:5000/api/v1/student", {
+                name: document.getElementById("studupdatename").value,
+                usn: document.getElementById("studupdateusn").value,
+                pwd: document.getElementById("studupdatepwd").value
+            })
+                .then(responseData => {
+                    if (responseData == 'User updated successfully!') {
+                        alert('User updated successfully!');
+                        console.log(responseData);
+                    }
+                    else {
+                        alert('Please Give valid input');
+                    }
+                })
+                .catch(err => {
+                    alert('Please Give valid input');
+                    console.log(err);
+                });
+        };
+
+        //Add Course
+        const addCourse = () => {
+            sendHttpRequest("POST", "http://127.0.0.1:5000/api/v1/courses", {
+                coursename: document.getElementById("course_name").value,
+                coursecode: document.getElementById("course_code").value,
+                credits: document.getElementById("course_credits").value
+            })
+                .then(responseData => {
+                    console.log(responseData);
+                    alert("Course Added!");
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        };
+
+        //Remove All Courses
+        const removeAllCourses = () => {
+            sendHttpRequest("DELETE", "http://127.0.0.1:5000/api/v1/courses")
+                .then(responseData => {
+                    console.log(responseData);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        };
+
+        //Update Course
+        const updateCourse = () => {
+            sendHttpRequest("PUT", "http://127.0.0.1:5000/api/v1/courses", {
+                _id: "5dd2ce03cbb0004f39b46e79",
+                coursename: document.getElementById("course_name").value,
+                coursecode: document.getElementById("course_code").value,
+                credits: document.getElementById("course_credits").value
+            })
+                .then(responseData => {
+                    console.log(responseData);
+                    alert("Course Updated!");
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        };
+
+        //Search 1 Course
+        const searchCourse = () => {
+            var ccode = document.getElementById("searchcoursecode");
+            sendHttpRequest("GET", "http://127.0.0.1:5000/api/v1/courses/" + ccode).then(
+                responseData => {
+                    console.log(responseData);
+                }
+            );
+        };
+
+        //Remove 1 Course
+        const removeCourse = () => {
+            var ccode = document.getElementById("removecoursecode").value;
+            sendHttpRequest("DELETE", "http://127.0.0.1:5000/api/v1/courses/" + ccode)
+                .then(responseData => {
+                    console.log(responseData);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        };
+
+
+        //List All Events
+        const listEvents = () => {
+            sendHttpRequest("GET", "http://127.0.0.1:5000/api/v1/status/student/allevents/" + usn).then(
+                responseData => {
+                    if (document.getElementById("table") != null) {
+                        document.getElementById("table").remove();
+                    }
+                    //Main Node
+                    var node = document.createElement("div");
+                    node.setAttribute("class", "card shadow-none");
+                    node.setAttribute("id", "table");
+
+                    //Card-Body
+                    var card_body = document.createElement("div");
+                    card_body.setAttribute("class", "card-body text-center font-weight-light");
+
+                    //Create and Append Table to Card-Body
+                    var table = document.createElement("table");
+                    table.setAttribute("class", "table table-sm table-hover mb-0 mt-0");
+                    var tbody = document.createElement("tbody");
+                    for (var i = 0; i < Object.keys(responseData).length; i++) {
+                        var tr = document.createElement("tr");
+                        var td = document.createElement("td");
+                        var td2 = td.cloneNode(true);
+                        var td3 = td.cloneNode(true);
+                        var td4 = td.cloneNode(true);
+                        var td5 = td.cloneNode(true);
+                        td.appendChild(document.createTextNode(responseData[i].event));
+                        td2.appendChild(document.createTextNode(responseData[i].course));
+                        td3.appendChild(document.createTextNode(responseData[i].team));
+                        td4.appendChild(document.createTextNode(responseData[i].faculty));
+                        td5.appendChild(document.createTextNode(responseData[i].status));
+                        tr.appendChild(td); tr.appendChild(td2); tr.appendChild(td3); tr.appendChild(td4); tr.appendChild(td5);
+                        table.appendChild(tbody.appendChild(tr));
+                    }
+                    card_body.appendChild(table);
+
+                    //Append Header & Body to Main Node
+                    node.appendChild(card_body);
+
+                    //Append Main Node to Card Column
+                    document.getElementById("list").appendChild(node);
+                    document.getElementById("list").style.display = "block";
+                    document.getElementById("list").setAttribute("class", "animated bounce 1");
+                    console.log(responseData);
+                }
+            );
+        };
+
+        //List All Pending Events
+        const listPEvents = () => {
+            sendHttpRequest("GET", "http://127.0.0.1:5000/api/v1/status/student/pendingevents/" + usn).then(
+                responseData => {
+                    if (document.getElementById("table") != null) {
+                        document.getElementById("table").remove();
+                    }
+                    //Main Node
+                    var node = document.createElement("div");
+                    node.setAttribute("class", "card shadow-none");
+                    node.setAttribute("id", "table");
+
+                    //Card-Body
+                    var card_body = document.createElement("div");
+                    card_body.setAttribute("class", "card-body text-center font-weight-light");
+
+                    //Create and Append Table to Card-Body
+                    var table = document.createElement("table");
+                    table.setAttribute("class", "table table-sm table-hover mb-0 mt-0");
+                    var tbody = document.createElement("tbody");
+                    for (var i = 0; i < Object.keys(responseData).length; i++) {
+                        var tr = document.createElement("tr");
+                        var td = document.createElement("td");
+                        var td2 = td.cloneNode(true);
+                        var td3 = td.cloneNode(true);
+                        var td4 = td.cloneNode(true);
+                        var td5 = td.cloneNode(true);
+                        td.appendChild(document.createTextNode(responseData[i].event));
+                        td2.appendChild(document.createTextNode(responseData[i].course));
+                        td3.appendChild(document.createTextNode(responseData[i].team));
+                        td4.appendChild(document.createTextNode(responseData[i].faculty));
+                        tr.appendChild(td); tr.appendChild(td2); tr.appendChild(td3); tr.appendChild(td4);
+                        table.appendChild(tbody.appendChild(tr));
+                    }
+                    card_body.appendChild(table);
+
+                    //Append Header & Body to Main Node
+                    node.appendChild(card_body);
+
+                    //Append Main Node to Card Column
+                    document.getElementById("list").appendChild(node);
+                    document.getElementById("list").style.display = "block";
+                    document.getElementById("list").setAttribute("class", "animated bounce 1");
+                    console.log(responseData);
+                }
+            );
+        };
+
+        //List All Submitted Events
+        const listSEvents = () => {
+            sendHttpRequest("GET", "http://127.0.0.1:5000/api/v1/status/student/submittedevents/" + usn).then(
+                responseData => {
+                    if (document.getElementById("table") != null) {
+                        document.getElementById("table").remove();
+                    }
+                    //Main Node
+                    var node = document.createElement("div");
+                    node.setAttribute("class", "card shadow-none");
+                    node.setAttribute("id", "table");
+
+                    //Card-Body
+                    var card_body = document.createElement("div");
+                    card_body.setAttribute("class", "card-body text-center font-weight-light");
+
+                    //Create and Append Table to Card-Body
+                    var table = document.createElement("table");
+                    table.setAttribute("class", "table table-sm table-hover mb-0 mt-0");
+                    var tbody = document.createElement("tbody");
+                    for (var i = 0; i < Object.keys(responseData).length; i++) {
+                        var tr = document.createElement("tr");
+                        var td = document.createElement("td");
+                        var td2 = td.cloneNode(true);
+                        var td3 = td.cloneNode(true);
+                        var td4 = td.cloneNode(true);
+                        var td5 = td.cloneNode(true);
+                        td.appendChild(document.createTextNode(responseData[i].event));
+                        td2.appendChild(document.createTextNode(responseData[i].course));
+                        td3.appendChild(document.createTextNode(responseData[i].team));
+                        td4.appendChild(document.createTextNode(responseData[i].faculty));
+                        tr.appendChild(td); tr.appendChild(td2); tr.appendChild(td3); tr.appendChild(td4);
+                        table.appendChild(tbody.appendChild(tr));
+                    }
+                    card_body.appendChild(table);
+
+                    //Append Header & Body to Main Node
+                    node.appendChild(card_body);
+
+                    //Append Main Node to Card Column
+                    document.getElementById("list").appendChild(node);
+                    document.getElementById("list").style.display = "block";
+                    document.getElementById("list").setAttribute("class", "animated bounce 1");
+                    console.log(responseData);
+                }
+            );
+        };
+
+        //Add Team
+        const createTeam = () => {
+            sendHttpRequest("POST", "http://127.0.0.1:5000/api/v1/team/teamformation", {
+                usn: document.getElementById("team_usn").value,
+                section: document.getElementById("team_section").value,
+                teamno: document.getElementById("team_number").value
+            })
+                .then(responseData => {
+                    console.log(responseData);
+                    alert("Team Added!");
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        };
+
+        //Submit Event //////////////////
+        const submitEvent = () => {
+            sendHttpRequest("POST", "http://127.0.0.1:5000/api/status/eventsubmission", {
+                usn: document.getElementById("team_usn").value,
+                section: document.getElementById("team_section").value,
+                teamno: document.getElementById("team_number").value
+            })
+                .then(responseData => {
+                    console.log(responseData);
+                    alert("Submitted!");
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        };
+
+        update_student.addEventListener("click", updateStudent); //
+        add_course.addEventListener("click", addCourse); //
+        remove_all_courses.addEventListener("click", removeAllCourses); //
+        update_course.addEventListener("click", updateCourse); //
+        search_course.addEventListener("click", searchCourse); //
+        remove_course.addEventListener("click", removeCourse); //
+        list_events.addEventListener("click", listEvents); //
+        list_pending_events.addEventListener("click", listPEvents); //
+        list_submitted_events.addEventListener("click", listSEvents); //
+        create_team.addEventListener("click", createTeam); //
+        submit_event.addEventListener("click", submitEvent); //
+    </script>
+</body>
+
+</html>

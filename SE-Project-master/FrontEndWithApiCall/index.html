@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Welcome</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="css/mdb.min.css">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body style="background-color: #32323f;">
+  <div style="height: 100vh">
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="container">
+        <div class="text-center">
+          <h1 class="text-white">WEBSITE NAME</h1>
+        </div><br>
+        <div class="card-columns" style="column-count:2">
+          <div class="card shadow-none text-center rounded-0">
+            <div class="accordion" id="accordionStud">
+              <div class="card-header btn-group flex-wrap">
+                <button class="btn bg-danger text-white" style="width:20%" disabled>
+                  <i class="fas fa-user-graduate"></i>
+                </button>
+                <button class="btn btn-primary" style="width:30%" data-toggle="collapse" data-target="#StudSignIn"
+                  aria-expanded="true" aria-controls="StudSignIn">
+                  <i class="fas fa-sign-in-alt"></i> Sign-in
+                </button>
+                <button class="btn btn-primary" style="width:40%" data-toggle="collapse" data-target="#StudSignUp"
+                  aria-expanded="false" aria-controls="StudSignUp">
+                  <i class="fas fa-user-plus"></i> New Account?
+                </button>
+              </div>
+              <div class="justify-content-center align-items-center">
+
+
+                <div id="StudSignIn" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionStud">
+                  <div class="card-body">
+                    <form>
+                      <div class="row">
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="text" class="form-control" placeholder="USN">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="password" class="form-control" placeholder="Password">
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="button" class="form-control btn btn-success" value="SIGN-IN">
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+
+                <div id="StudSignUp" class="collapse" aria-labelledby="headingOne" data-parent="#accordionStud">
+                  <div class="card-body" style="background-color: #9A9EDE;">
+                    <form>
+                      <div class="row">
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="text" id="studname" class="form-control" placeholder="Name">
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="text" id="studusn" class="form-control" placeholder="USN">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="password" id="studpwd" class="form-control" placeholder="Password">
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="button" id="studsignup" class="form-control btn btn-success" value="REGISTER">
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="card shadow-none text-center rounded-0">
+            <div class="accordion" id="accordionFac">
+              <div class="card-header btn-group flex-wrap">
+                <button class="btn bg-info text-white" style="width:20%" disabled>
+                  <i class="fas fa-chalkboard-teacher"></i>
+                </button>
+                <button class="btn btn-primary" style="width:30%" data-toggle="collapse" data-target="#FacSignIn"
+                  aria-expanded="true" aria-controls="FacSignIn">
+                  <i class="fas fa-sign-in-alt"></i> Sign-in
+                </button>
+                <button class="btn btn-primary" style="width:40%" data-toggle="collapse" data-target="#FacSignUp"
+                  aria-expanded="false" aria-controls="FacSignUp">
+                  <i class="fas fa-user-plus"></i> New Account?
+                </button>
+              </div>
+
+
+              <div class="justify-content-center align-items-center">
+                <div id="FacSignIn" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionFac">
+                  <div class="card-body">
+                    <form>
+                      <div class="row">
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="text" class="form-control" placeholder="F-Code">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="password" class="form-control" placeholder="Password">
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="button" class="form-control btn btn-success" value="SIGN-IN">
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+
+
+                <div id="FacSignUp" class="collapse" aria-labelledby="headingOne" data-parent="#accordionFac">
+                  <div class="card-body" style="background-color: #9A9EDE;">
+                    <form>
+                      <div class="row">
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="text" id="facname" class="form-control" placeholder="Name">
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="text" id="faccode" class="form-control" placeholder="F-Code">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="email" id="facmail" class="form-control" placeholder="E-Mail">
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="text" id="facdep" class="form-control" placeholder="Department">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="password" id="facpwd" class="form-control" placeholder="Password">
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="md-form mt-0">
+                            <input type="button" id="facsignup" class="form-control btn btn-success" value="REGISTER">
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const student_signup = document.getElementById("studsignup"); //
+      const faculty_signup = document.getElementById("facsignup"); //
+
+      const sendHttpRequest = (method, url, data) => {
+        return fetch(url, {
+          method: method,
+          body: JSON.stringify(data),
+          headers: data
+            ? {
+              "Content-Type": "application/json"
+            }
+            : {}
+        }).then(response => {
+          if (response.status >= 400) {
+            response.json().then(errResData => {
+              const error = new Error("something went wrong!");
+              error.data = errResData;
+              throw error;
+            });
+          }
+          return response.json();
+        });
+      };
+
+      //Add Student
+      const addStudent = () => {
+        alert("register");
+        sendHttpRequest("POST", "http://127.0.0.1:5000/api/v1/student", {
+          name: document.getElementById("studname").value,
+          usn: document.getElementById("studusn").value,
+          pwd: document.getElementById("studpwd").value
+        })
+          .then(responseData => {
+            console.log(responseData);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      };
+
+      student_signup.addEventListener('click',addStudent);
+
+
+
+      //Add Faculty
+      const addFaculty = () => {
+        sendHttpRequest("POST", "http://127.0.0.1:5000/api/v1/faculty", {
+          name: document.getElementById("facname"),
+          fcode: document.getElementById("faccode"),
+          email: document.getElementById("facmail"),
+          Dname: document.getElementById("facdep"),
+          pwd: document.getElementById("facpwd")
+        })
+          .then(responseData => {
+            console.log(responseData);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      };
+
+      faculty_signup.addEventListener('click',addFaculty);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+//Student Apis
+//Add Student
+method : POST
+url : 127.0.0.1:5000/api/v1/student
+Request:
+{
+	"name":"xyz",
+	"usn":"01FB16ECSXXX",
+	"pwd":"@#$%1232"
+}
+
+
+//List all students
+method : GET
+url : 127.0.0.1:5000/api/v1/student
+
+
+
+//list specific student
+method : GET
+url : 127.0.0.1:5000/api/v1/student/<id>
+
+
+//Remove all students
+method : DELETE
+url : 127.0.0.1:5000/api/v1/student
+
+
+//Remove specific student
+method : DELETE
+url : 127.0.0.1:5000/api/v1/student/<id>
+
+
+//Update student
+method : PUT
+url : 127.0.0.1:5000/api/v1/student
+Request:
+{
+	"_id":"5dc6782c4ef9da823acfb5ba",
+	"name":"Gourishankar",
+	"usn":"01FB16ECS123",
+	"pwd":"@#$%12321"
+}
+
+
+
+//course Apis
+//Add Course
+method : POST
+url : 127.0.0.1:5000/api/v1/courses
+Request:
+{
+  "coursename":"BD",
+	"coursecode":"BD1122",
+	"credits":"4"
+}
+
+
+//List all courses
+method : GET
+url : 127.0.0.1:5000/api/v1/courses
+
+
+
+//list specific course
+method : GET
+url : 127.0.0.1:5000/api/v1/courses/<id>
+
+
+//Remove all courses
+method : DELETE
+url : 127.0.0.1:5000/api/v1/courses
+
+
+//Remove specific course
+method : DELETE
+url : 127.0.0.1:5000/api/v1/courses/<id>
+
+
+//Update course
+method : PUT
+url : 127.0.0.1:5000/api/v1/courses
+Request:
+{
+	"_id":"5dc683b1f5efb89324961a73",
+	"coursename":"CC",
+	"coursecode":"CC1122",
+	"credits":"4"
+}
+
+
+//Faculty Apis
+//Add Faculty
+method : POST
+url : 127.0.0.1:5000/api/v1/faculty
+Request:
+{
+	"name":"Badree",
+	"fcode":"bd5112",
+	"email":"badree@pes.edu",
+	"Dname":"Mechanical  Engineering",
+	"pwd":"Mebadree"
+}
+
+
+//List all faculties
+method : GET
+url : 127.0.0.1:5000/api/v1/faculty
+
+
+
+//list specific faculty
+method : GET
+url : 127.0.0.1:5000/api/v1/faculty/<id>
+
+
+//Remove all faculties
+method : DELETE
+url : 127.0.0.1:5000/api/v1/faculty
+
+
+//Remove specific faculty
+method : DELETE
+url : 127.0.0.1:5000/api/v1/faculty/<id>
+
+
+//Update faculty
+method : PUT
+url : 127.0.0.1:5000/api/v1/faculty
+Request:
+{
+	"_id":"5dc688504a387c2414b38e8a",
+	"name":"Shrkant",
+	"fcode":"CC5112",
+	"email":"shree@pes.edu",
+	"Dname":"Mechanical  Engineering",
+	"pwd":"Mebadree"
+}

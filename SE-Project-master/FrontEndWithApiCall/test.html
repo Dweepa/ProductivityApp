@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Fetch API Sandbox</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <h1 class="display-4 mb-4">Fetch API Sandbox</h1>
+  <div class="d-flex">
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="addstudent">Add student</button>
+  </div>
+  <br>
+    <button class="btn btn-warning mr-4" id="getstudents">List students</button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="deletestudents">delete all students</button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="del1student">Delete any student</button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="updatestudent">Update student</button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="listanystudent">listanystudent</button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="loginstudent">loginstudent</button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="addfaculty">Add Faculty </button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="getfaculties">ListFaculties </button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="deletefaculties">deletefaculties </button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="updatefaculty">updatefaculty </button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="list1faculty">listanyfaculty </button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="delete1faculty">deleteanyfaculty</button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="addcourse">Add Course </button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="getcourses">getcourses </button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="deletecourses">deletecourses </button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="updatecourses">updatecoures</button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="list1course">listanycourse </button>
+  </div>
+  <br>
+  <div class="d-flex">
+    <button class="btn btn-warning mr-4" id="delete1course">deleteanycourse</button>
+  </div>
+  <br>
+  </div>
+      <script>
+      const sendHttpRequest = (method, url, data) => {
+          return fetch(url, {
+              method: method,
+              body: JSON.stringify(data),
+              headers: data ? {
+                  'Content-Type': 'application/json'
+              } : {}
+          }).then(response => {
+              if (response.status >= 400) {
+                  response.json().then(errResData => {
+                      const error = new Error('something went wrong!');
+                      error.data = errResData;
+                      throw error;
+                  });
+              }
+              return response.json();
+          });
+      };
+      const getuser = document.getElementById('getstudents');
+      const senduser = document.getElementById('addstudent');
+      const deleteuser = document.getElementById('deletestudents');
+      const updateuser = document.getElementById('updatestudent');
+      const list1student = document.getElementById('listanystudent');
+      const deletestudent1 = document.getElementById('del1student');
+
+      const getData = () => {
+          sendHttpRequest('GET', 'http://127.0.0.1:5000/api/v1/student')
+              .then(responseData => {
+                  console.log(responseData);
+              });
+      };
+      const sendData = () => {
+          sendHttpRequest('POST', 'http://127.0.0.1:5000/api/v1/student', {
+                  name: "Gnana",
+                  usn: "01FB16ECS119",
+                  pwd: "@#$%1232"
+              }).then(responseData => {
+                  console.log(responseData)
+              })
+              .catch(err => {
+                  console.log(err);
+              });
+      };
+      const deleteData = () => {
+          sendHttpRequest('DELETE', 'http://127.0.0.1:5000/api/v1/student')
+              .then(responseData => {
+                  console.log(responseData)
+              })
+              .catch(err => {
+                  console.log(err);
+              });
+      };
+      const updateuser1 = () => {
+        sendHttpRequest('PUT', 'http://127.0.0.1:5000/api/v1/student', {
+                _id: "5dd18b51c47e01213c0b5924",
+                name: "Gourishankar",
+                usn: "01FB16ECS119",
+                pwd: "@#$%1232"
+            }).then(responseData => {
+                console.log(responseData)
+            })
+            .catch(err => {
+                console.log(err);
+            });
+      };
+
+      const listanystudent1 = () => {
+        var usn = '01FB16ECS119';
+          sendHttpRequest('GET', 'http://127.0.0.1:5000/api/v1/student/'+usn)
+              .then(responseData => {
+                  console.log(responseData);
+              });
+      };
+
+      const deleteany1student = () => {
+        var usn = '01FB16ECS119';
+          sendHttpRequest('DELETE', 'http://127.0.0.1:5000/api/v1/student/'+usn)
+              .then(responseData => {
+                  console.log(responseData)
+              })
+              .catch(err => {
+                  console.log(err);
+              });
+      };
+      getuser.addEventListener('click', getData);
+      senduser.addEventListener('click', sendData);
+      deleteuser.addEventListener('click', deleteData);
+      updateuser.addEventListener('click',updateuser1);
+      list1student.addEventListener('click',listanystudent1);
+      deletestudent1.addEventListener('click',deleteany1student);
+
+
+      const getfaclty = document.getElementById('getfaculties');
+      const sendfaculty = document.getElementById('addfaculty');
+      const deletefaculty = document.getElementById('deletefaculties');
+      const updatefaculty = document.getElementById('updatefaculty');
+      const list1facu = document.getElementById('list1faculty');
+      const delete1facu = document.getElementById('delete1faculty');
+
+
+      const getfaculties = () => {
+          sendHttpRequest('GET', 'http://127.0.0.1:5000/api/v1/faculty')
+              .then(responseData => {
+                  console.log(responseData);
+              });
+      };
+      const addfaculties = () => {
+          sendHttpRequest('POST', 'http://127.0.0.1:5000/api/v1/faculty', {
+                  name: "Shrikant",
+                  fcode: "bsew11",
+                  email: "badree@pes.edu",
+                  Dname: "Mechanical  Engineering",
+                  pwd: "Mebadree"
+              }).then(responseData => {
+                  console.log(responseData)
+              })
+              .catch(err => {
+                  console.log(err);
+              });
+      };
+      const deletefaculties = () => {
+          sendHttpRequest('DELETE', 'http://127.0.0.1:5000/api/v1/faculty')
+              .then(responseData => {
+                  console.log(responseData)
+              })
+              .catch(err => {
+                  console.log(err);
+              });
+      };
+      const updatefaculties1 = () => {
+          sendHttpRequest('PUT', 'http://127.0.0.1:5000/api/v1/faculty', {
+                  _id : "5dd18d4cc47e01213c0b5925",
+                  name: "Badree",
+                  fcode: "bsew11",
+                  email: "badree@pes.edu",
+                  Dname: "Mechanical  Engineering",
+                  pwd: "Mebadree"
+              }).then(responseData => {
+                  console.log(responseData)
+              })
+              .catch(err => {
+                  console.log(err);
+              });
+      };
+
+      const listspecfaculty = () => {
+              var fcode = 'bsew11';
+                sendHttpRequest('GET', 'http://127.0.0.1:5000/api/v1/faculty/'+fcode)
+                    .then(responseData => {
+                        console.log(responseData);
+                    });
+            };
+
+            const deletespecfaculty = () => {
+              var fcode = 'bsew11';
+                sendHttpRequest('DELETE', 'http://127.0.0.1:5000/api/v1/faculty/'+fcode)
+                    .then(responseData => {
+                        console.log(responseData)
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            };
+
+
+
+      getfaclty.addEventListener('click', getfaculties);
+      addfaculty.addEventListener('click', addfaculties);
+      deletefaculty.addEventListener('click', deletefaculties);
+      updatefaculty.addEventListener('click',updatefaculties1);
+      list1facu.addEventListener('click',listspecfaculty);
+      delete1facu.addEventListener('click',deletespecfaculty);
+
+
+      const getcourse = document.getElementById('getcourses');
+      const addcourse = document.getElementById('addcourse');
+      const deletecourse = document.getElementById('deletecourses');
+      const updatecourse = document.getElementById('updatecourses');
+      const listspeccourse = document.getElementById('list1course');
+      const deletespeccourse = document.getElementById('delete1course');
+
+      const getcourses = () => {
+          sendHttpRequest('GET', 'http://127.0.0.1:5000/api/v1/courses')
+              .then(responseData => {
+                  console.log(responseData);
+              });
+      };
+      const addcourses = () => {
+          sendHttpRequest('POST', 'http://127.0.0.1:5000/api/v1/courses', {
+                  coursename: "SE",
+                  coursecode: "SE1122",
+                  credits: "4"
+              }).then(responseData => {
+                  console.log(responseData)
+              })
+              .catch(err => {
+                  console.log(err);
+              });
+      };
+      const deletecourses = () => {
+          sendHttpRequest('DELETE', 'http://127.0.0.1:5000/api/v1/courses')
+              .then(responseData => {
+                  console.log(responseData)
+              })
+              .catch(err => {
+                  console.log(err);
+              });
+      };
+      const updatecourse1 = () => {
+          sendHttpRequest('PUT', 'http://127.0.0.1:5000/api/v1/courses', {
+	               _id:"5dd18fa6c47e01213c0b5928",
+	               coursename:"WT2",
+	               coursecode:"SE1122",
+	               credits:"4"
+              }).then(responseData => {
+                  console.log(responseData)
+              })
+              .catch(err => {
+                  console.log(err);
+              });
+      };
+
+      const listany1course = () => {
+                    var ccode = 'SE1122';
+                      sendHttpRequest('GET', 'http://127.0.0.1:5000/api/v1/courses/'+ccode)
+                          .then(responseData => {
+                              console.log(responseData);
+                          });
+                  };
+
+      const delete1course = () => {
+                    var ccode = 'SE1122';
+                      sendHttpRequest('DELETE', 'http://127.0.0.1:5000/api/v1/courses/'+ccode)
+                          .then(responseData => {
+                              console.log(responseData)
+                          })
+                          .catch(err => {
+                              console.log(err);
+                          });
+                  };
+      getcourse.addEventListener('click', getcourses);
+      addcourse.addEventListener('click', addcourses);
+      deletecourse.addEventListener('click', deletecourses);
+      updatecourse.addEventListener('click',updatecourse1);
+      listspeccourse.addEventListener('click',listany1course);
+      deletespeccourse.addEventListener('click',delete1course);
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,300 @@
+                <div id="list" class="card-columns" style="column-count:1; display: none;">
+                        <div class="card-header font-weight-normal text-center bg-light">
+                                <i class="fas fa-list-alt"></i> LIST
+                                <button class="btn btn-danger p-1 pr-2 pl-2" id="closelist"><i
+                                        class="fas fa-times"></i></button>
+                        </div>
+                </div>
+
+
+
+                const close_list = document.getElementById("closelist");//
+                const list_students = document.getElementById("studlist"); //
+                const list_faculties = document.getElementById("faclist"); //
+                const list_courses = document.getElementById("courselist"); //
+
+                //CloseList
+                const closeList = () => {
+                        document.getElementById("table").remove();
+                        document.getElementById("list").style.display = "none";
+                };
+
+                //List All Students
+                const listStudents = () => {
+                        sendHttpRequest("GET", "http://127.0.0.1:5000/api/v1/student").then(
+                                responseData => {
+                                        if (document.getElementById("table") != null) {
+                                                document.getElementById("table").remove();
+                                        }
+                                        //Main Node
+                                        var node = document.createElement("div");
+                                        node.setAttribute("class", "card shadow-none");
+                                        node.setAttribute("id", "table");
+
+                                        //Card-Body
+                                        var card_body = document.createElement("div");
+                                        card_body.setAttribute("class", "card-body text-center font-weight-light");
+
+                                        //Create and Append Table to Card-Body
+                                        var table = document.createElement("table");
+                                        table.setAttribute("class", "table table-sm table-hover mb-0 mt-0");
+                                        var tbody = document.createElement("tbody");
+                                        for (var i = 0; i < Object.keys(responseData).length; i++) {
+                                                var tr = document.createElement("tr");
+                                                var td = document.createElement("td");
+                                                var td2 = td.cloneNode(true);
+                                                td.appendChild(document.createTextNode(responseData[i].usn));
+                                                td2.appendChild(document.createTextNode(responseData[i].name));
+                                                tr.appendChild(td);
+                                                tr.appendChild(td2);
+                                                table.appendChild(tbody.appendChild(tr));
+                                        }
+                                        card_body.appendChild(table);
+
+                                        //Append Header & Body to Main Node
+                                        node.appendChild(card_body);
+
+                                        //Append Main Node to Card Column
+                                        document.getElementById("list").appendChild(node);
+                                        document.getElementById("list").style.display = "block";
+                                        document.getElementById("list").setAttribute("class", "animated bounce 1");
+                                        console.log(responseData);
+                                }
+                        );
+                };
+
+                //List All Faculties
+                const listFaculties = () => {
+                        sendHttpRequest("GET", "http://127.0.0.1:5000/api/v1/student").then(
+                                responseData => {
+                                        if (document.getElementById("table") != null) {
+                                                document.getElementById("table").remove();
+                                        }
+                                        //Main Node
+                                        var node = document.createElement("div");
+                                        node.setAttribute("class", "card shadow-none");
+                                        node.setAttribute("id", "table");
+
+                                        //Card-Body
+                                        var card_body = document.createElement("div");
+                                        card_body.setAttribute("class", "card-body text-center font-weight-light");
+
+                                        //Create and Append Table to Card-Body
+                                        var table = document.createElement("table");
+                                        table.setAttribute("class", "table table-sm table-hover mb-0 mt-0");
+                                        var tbody = document.createElement("tbody");
+                                        for (var i = 0; i < Object.keys(responseData).length; i++) {
+                                                var tr = document.createElement("tr");
+                                                var td = document.createElement("td");
+                                                var td2 = td.cloneNode(true);
+                                                var td3 = td.cloneNode(true);
+                                                var td4 = td.cloneNode(true);
+                                                td.appendChild(document.createTextNode(responseData[i].fcode));
+                                                td2.appendChild(document.createTextNode(responseData[i].name));
+                                                td3.appendChild(document.createTextNode(responseData[i].email));
+                                                td4.appendChild(document.createTextNode(responseData[i].Dname));
+                                                tr.appendChild(td); tr.appendChild(td2); tr.appendChild(td3); tr.appendChild(td4);
+                                                table.appendChild(tbody.appendChild(tr));
+                                        }
+                                        card_body.appendChild(table);
+
+                                        //Append Header & Body to Main Node
+                                        node.appendChild(card_body);
+
+                                        //Append Main Node to Card Column
+                                        document.getElementById("list").appendChild(node);
+                                        document.getElementById("list").style.display = "block";
+                                        document.getElementById("list").setAttribute("class", "animated bounce 1");
+                                        console.log(responseData);
+                                }
+                        );
+                };
+
+                //List All Courses
+                const listCourses = () => {
+                        sendHttpRequest("GET", "http://127.0.0.1:5000/api/v1/student").then(
+                                responseData => {
+                                        if (document.getElementById("table") != null) {
+                                                document.getElementById("table").remove();
+                                        }
+                                        //Main Node
+                                        var node = document.createElement("div");
+                                        node.setAttribute("class", "card shadow-none");
+                                        node.setAttribute("id", "table");
+
+                                        //Card-Body
+                                        var card_body = document.createElement("div");
+                                        card_body.setAttribute("class", "card-body text-center font-weight-light");
+
+                                        //Create and Append Table to Card-Body
+                                        var table = document.createElement("table");
+                                        table.setAttribute("class", "table table-sm table-hover mb-0 mt-0");
+                                        var tbody = document.createElement("tbody");
+                                        for (var i = 0; i < Object.keys(responseData).length; i++) {
+                                                var tr = document.createElement("tr");
+                                                var td = document.createElement("td");
+                                                var td2 = td.cloneNode(true);
+                                                var td3 = td.cloneNode(true);
+                                                td.appendChild(document.createTextNode(responseData[i].coursecode));
+                                                td2.appendChild(document.createTextNode(responseData[i].coursename));
+                                                td3.appendChild(document.createTextNode(responseData[i].credits));
+                                                tr.appendChild(td); tr.appendChild(td2); tr.appendChild(td3);
+                                                table.appendChild(tbody.appendChild(tr));
+                                        }
+                                        card_body.appendChild(table);
+
+                                        //Append Header & Body to Main Node
+                                        node.appendChild(card_body);
+
+                                        //Append Main Node to Card Column
+                                        document.getElementById("list").appendChild(node);
+                                        document.getElementById("list").style.display = "block";
+                                        document.getElementById("list").setAttribute("class", "animated bounce 1");
+                                        console.log(responseData);
+                                }
+                        );
+                };
+
+                //Search 1 Student
+                const searchStudent = () => {
+                        var usn = document.getElementById("searchstudusn");
+                        sendHttpRequest("GET", "http://127.0.0.1:5000/api/v1/student/" + usn).then(
+                                responseData => {
+                                        if (document.getElementById("table") != null) {
+                                                document.getElementById("table").remove();
+                                        }
+                                        //Main Node
+                                        var node = document.createElement("div");
+                                        node.setAttribute("class", "card shadow-none");
+                                        node.setAttribute("id", "table");
+
+                                        //Card-Body
+                                        var card_body = document.createElement("div");
+                                        card_body.setAttribute("class", "card-body text-center font-weight-light");
+
+                                        //Create and Append Table to Card-Body
+                                        var table = document.createElement("table");
+                                        table.setAttribute("class", "table table-sm table-hover mb-0 mt-0");
+                                        var tbody = document.createElement("tbody");
+                                        var tr = document.createElement("tr");
+                                        var td = document.createElement("td");
+                                        var td2 = td.cloneNode(true);
+                                        td.appendChild(document.createTextNode(responseData[0].usn));
+                                        td2.appendChild(document.createTextNode(responseData[0].name));
+                                        tr.appendChild(td);
+                                        tr.appendChild(td2);
+                                        table.appendChild(tbody.appendChild(tr));
+                                        card_body.appendChild(table);
+
+                                        //Append Header & Body to Main Node
+                                        node.appendChild(card_body);
+
+                                        //Append Main Node to Card Column
+                                        document.getElementById("list").appendChild(node);
+                                        document.getElementById("list").style.display = "block";
+                                        document.getElementById("list").setAttribute("class", "animated bounce 1");
+                                        console.log(responseData);
+
+                                }
+                        );
+                };
+
+                //Search 1 Course
+                const searchCourse = () => {
+                        var ccode = document.getElementById("searchcoursecode");
+                        sendHttpRequest("GET", "http://127.0.0.1:5000/api/v1/courses/" + ccode).then(
+                                responseData => {
+                                        if (document.getElementById("table") != null) {
+                                                document.getElementById("table").remove();
+                                        }
+                                        //Main Node
+                                        var node = document.createElement("div");
+                                        node.setAttribute("class", "card shadow-none");
+                                        node.setAttribute("id", "table");
+
+                                        //Card-Body
+                                        var card_body = document.createElement("div");
+                                        card_body.setAttribute("class", "card-body text-center font-weight-light");
+
+                                        //Create and Append Table to Card-Body
+                                        var table = document.createElement("table");
+                                        table.setAttribute("class", "table table-sm table-hover mb-0 mt-0");
+                                        var tbody = document.createElement("tbody");
+                                        var tr = document.createElement("tr");
+                                        var td = document.createElement("td");
+                                        var td2 = td.cloneNode(true);
+                                        var td3 = td.cloneNode(true);
+                                        td.appendChild(document.createTextNode(responseData[0].coursecode));
+                                        td2.appendChild(document.createTextNode(responseData[0].coursename));
+                                        td3.appendChild(document.createTextNode(responseData[0].credits));
+                                        tr.appendChild(td);
+                                        tr.appendChild(td2);
+                                        table.appendChild(tbody.appendChild(tr));
+                                        card_body.appendChild(table);
+
+                                        //Append Header & Body to Main Node
+                                        node.appendChild(card_body);
+
+                                        //Append Main Node to Card Column
+                                        document.getElementById("list").appendChild(node);
+                                        document.getElementById("list").style.display = "block";
+                                        document.getElementById("list").setAttribute("class", "animated bounce 1");
+                                        console.log(responseData);
+
+                                }
+                        );
+                };
+
+                //Search 1 Faculty
+                const searchFaculty = () => {
+                        var fcode = document.getElementById("searchfaccode");
+                        sendHttpRequest("GET", "http://127.0.0.1:5000/api/v1/faculty/" + fcode).then(
+                                responseData => {
+                                        if (document.getElementById("table") != null) {
+                                                document.getElementById("table").remove();
+                                        }
+                                        //Main Node
+                                        var node = document.createElement("div");
+                                        node.setAttribute("class", "card shadow-none");
+                                        node.setAttribute("id", "table");
+
+                                        //Card-Body
+                                        var card_body = document.createElement("div");
+                                        card_body.setAttribute("class", "card-body text-center font-weight-light");
+
+                                        //Create and Append Table to Card-Body
+                                        var table = document.createElement("table");
+                                        table.setAttribute("class", "table table-sm table-hover mb-0 mt-0");
+                                        var tbody = document.createElement("tbody");
+                                        var tr = document.createElement("tr");
+                                        var td = document.createElement("td");
+                                        var td2 = td.cloneNode(true);
+                                        var td3 = td.cloneNode(true);
+                                        var td4 = td.cloneNode(true);
+                                        td.appendChild(document.createTextNode(responseData[0].fcode));
+                                        td2.appendChild(document.createTextNode(responseData[0].name));
+                                        td3.appendChild(document.createTextNode(responseData[0].email));
+                                        td4.appendChild(document.createTextNode(responseData[0].Dname));
+                                        tr.appendChild(td);
+                                        tr.appendChild(td2);
+                                        tr.appendChild(td3);
+                                        tr.appendChild(td4);
+                                        table.appendChild(tbody.appendChild(tr));
+                                        card_body.appendChild(table);
+
+                                        //Append Header & Body to Main Node
+                                        node.appendChild(card_body);
+
+                                        //Append Main Node to Card Column
+                                        document.getElementById("list").appendChild(node);
+                                        document.getElementById("list").style.display = "block";
+                                        document.getElementById("list").setAttribute("class", "animated bounce 1");
+                                        console.log(responseData);
+                                }
+                        );
+                };
+
+                close_list.addEventListener("click", closeList); //
+                list_students.addEventListener("click", listStudents); //
+                list_faculties.addEventListener("click", listFaculties); //
+                list_courses.addEventListener("click", listCourses); //

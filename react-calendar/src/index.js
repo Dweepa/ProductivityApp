@@ -27,8 +27,9 @@ function App() {
         <div className="card bg-white rounded-0">
             <div className="card-body">
                 <i className="fas fa-lg fa-chalkboard-teacher"></i>
-                <span id="fname"></span>
-                <small id="fcode" className="text-muted">F-Code</small>
+                <span id="fname">Gowri</span>
+                <br/>
+                <small id="fcode" className="text-muted">f1234</small>
             </div>
         </div>
         <button className="btn btn-light active rounded-0 w-100 m-0 shadow-none"><i className="fas fa-home"></i> Home

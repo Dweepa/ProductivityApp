@@ -54,7 +54,7 @@ class NewComponent extends React.Component {
          'm':this.props.m,
          'y':this.props.y
          };
-        fetch("http://127.0.0.1:5000/add", {method:"POST",
+        fetch("http://127.0.0.1:5004/add", {method:"POST",
         headers: {
          'Accept': 'application/json',
          'Content-Type': 'application/json',
@@ -365,7 +365,7 @@ export default class Calendar extends React.Component {
         var yea = this.state.dateObject.format("Y");
 //        console.log(day,mon,yea);
 
-        fetch("http://127.0.0.1:5000/show/"+day+'/'+mon+'/'+yea).then(res => res.json().then(data1 => {this.setState({data: data1['output']});}));
+        fetch("http://127.0.0.1:5004/show/"+day+'/'+mon+'/'+yea).then(res => res.json().then(data1 => {this.setState({data: data1['output']});}));
 
       }
     );

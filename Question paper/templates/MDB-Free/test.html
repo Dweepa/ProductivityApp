@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>QUESTION PAPER DASHBOARD</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="file://Users/dweepa/Documents/SE/Question\ paper/templates/MDB-Free/css/bootstrap.min.css">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="file://Users/dweepa/Documents/SE/Question\ paper/templates/MDB-Free/css/mdb.min.css">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="file://Users/dweepa/Documents/SE/Question\ paper/templates/MDB-Free/css/style.css">
+</head>
+
+<body style="background-color: #eef7f7;">
+
+  <nav class="mb-0 navbar fixed-top navbar-expand-lg navbar-dark shadow-none" style="background-color: #32323f;">
+    <a class="navbar-brand" href="#">QUESTION PAPER</a>
+  </nav>
+  <nav class="mb-0 navbar navbar-expand-lg navbar-dark shadow-none" style="background-color: #32323f;">
+    <a class="navbar-brand" href="#">QUESTION PAPER</a>
+  </nav>
+  <div class="sidenav border-right">
+    <div class="card bg-white rounded-0">
+      <div class="card-body">
+        <i class="fas fa-lg fa-chalkboard-teacher"></i>
+        <span id="fname"></span>
+        <br>
+        <small id="fcode" class="text-muted">F-Code</small>
+      </div>
+    </div>
+
+    <button class="btn btn-light active rounded-0 w-100 m-0 shadow-none"><i class="fas fa-home"></i> Home
+    </button>
+    <button class="btn btn-light rounded-0 w-100 m-0 shadow-none"><i class="fas fa-bell"></i> Notifications
+      <span class="badge bg-danger">1</span> </button>
+    <button id="logout" class="btn btn-light rounded-0 w-100 m-0 shadow-none"><i class="fas fa-sign-out-alt"></i>
+      LOGOUT
+    </button>
+  </div>
+  <div class="main">
+    <div class="card-columns" style="column-count:1;">
+    </div>
+    <form action="http://localhost:5002/submit" method='POST'>
+      <div class="card-columns">
+        <div class="card shadow-none">
+          <div class="card-body text-center font-weight-light mb-0">
+            <div class="row">
+              <div class="col">
+                <div class="md-form mt-0 mt-0">
+                  <input type="text" name="subject" class="form-control" value="SUBJECT">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="md-form mt-0 mt-0">
+                  <input type="date" name="date" class="form-control" value="Date">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card shadow-none">
+          <div class="card-header font-weight-normal text-center bg-light">
+            <i class="fas fa-shapes"></i> SECTION 1
+          </div>
+          <div class="card-body text-center mt-0 pr-4 pl-4 pb-0 pt-0">
+            <div class="row">
+              <div class="col-2 md-form form-control-static">
+                <input type="text" id="" class="form-control" value="1 [A]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form">
+                  <input type="text" name="1a" id="" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form">
+                  <input type="number" name="marks1a"class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="1 [B]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0 mt-0">
+                  <input type="text" name="1b" id="" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0 mt-0 ">
+                  <input type="number" name="marks1b" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="1 [C]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0 mt-0 ">
+                  <input type="text" id=""  name="1c" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0 mt-0 ">
+                  <input type="number"  name="marks1c"  class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 mt-0  form-control-static">
+                <input type="text" id="" class="form-control" value="1 [D]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0 mt-0 ">
+                  <input type="text" id=""  name="1d" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0 mt-0 ">
+                  <input type="number"  name="marks1d" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="1 [E]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id="" name="1e"  class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number"  name="marks1e" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card shadow-none">
+          <div class="card-header font-weight-normal text-center bg-light">
+            <i class="fas fa-shapes"></i> SECTION 2
+          </div>
+          <div class="card-body text-center pr-4 pl-4 pb-0 pt-0">
+            <div class="row">
+              <div class="col-2 md-form form-control-static">
+                <input type="text" id="" class="form-control" value="2 [A]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form">
+                  <input type="text" id="" name="2a" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form">
+                  <input type="number"  name="marks2a" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="2 [B]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id=""  name="2b" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number"  name="marks2b" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="2 [C]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id=""  name="2c" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number"  name="marks2c" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="2 [D]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id=""  name="2d" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number"  name="marks2d" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="2 [E]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id=""  name="2e" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number"  name="marks2e" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card shadow-none">
+          <div class="card-header font-weight-normal text-center bg-light">
+            <i class="fas fa-shapes"></i> SECTION 3
+          </div>
+          <div class="card-body text-center pr-4 pl-4 pb-0 pt-0">
+            <div class="row">
+              <div class="col-2 md-form form-control-static">
+                <input type="text" id="" class="form-control" value="3 [A]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form">
+                  <input type="text" id="" name="3a" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form">
+                  <input type="number" name="marks3a" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="3 [B]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id="" name="3b"  class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number" name="marks3b" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="3 [C]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id="" name="3c" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number" name="marks3c"  class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="3 [D]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id="" name="3d" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number" name="marks3d" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="3 [E]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id="" name="3e" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number" name="marks3e" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card shadow-none">
+          <div class="card-header font-weight-normal text-center bg-light">
+            <i class="fas fa-shapes"></i> SECTION 4
+          </div>
+          <div class="card-body text-center pr-4 pl-4 pb-0 pt-0">
+            <div class="row">
+              <div class="col-2 md-form form-control-static">
+                <input type="text" id="" class="form-control" value="4 [A]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form">
+                  <input type="text" id="" name="4a" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form">
+                  <input type="number" name="marks4a" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="4 [B]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id="" name="4b" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number" name="marks4b" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="4 [C]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id="" name="4c" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number" name="marks4c" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="4 [D]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id="" name="4d" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number" name="marks4c"  class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="4 [E]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id="" name="4e"  class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number" name="marks4e"  class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card shadow-none">
+          <div class="card-header font-weight-normal text-center bg-light">
+            <i class="fas fa-shapes"></i> SECTION 5
+          </div>
+          <div class="card-body text-center pr-4 pl-4 pb-0 pt-0">
+            <div class="row">
+              <div class="col-2 md-form form-control-static">
+                <input type="text" id="" class="form-control" value="5 [A]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form">
+                  <input type="text" id="" name="5a" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form">
+                  <input type="number" name="marks5a" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="5 [B]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id="" name="5b" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number" name="marks5b" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="5 [C]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id="" name="5c" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number" name="marks5c" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="5 [D]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id="" name="5d" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number" name="marks5d" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 md-form mt-0 form-control-static">
+                <input type="text" id="" class="form-control" value="5 [E]" disabled>
+              </div>
+              <div class="col">
+                <div class="md-form mt-0">
+                  <input type="text" id="" name="5e" class="form-control" value="Question">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="md-form mt-0">
+                  <input type="number" name="marks5a" class="form-control" value="1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <center class="p-3"><input type="submit" class="btn btn-success p-1 pr-2 pl-2" id="closelist"></center>
+      </form>
+  </div>
+</body>
+
+</html>

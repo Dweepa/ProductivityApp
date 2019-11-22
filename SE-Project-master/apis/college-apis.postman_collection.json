@@ -1,0 +1,638 @@
+{
+	"info": {
+		"_postman_id": "25a4cb5e-8da2-45b3-95ae-84426b23b76c",
+		"name": "college-apis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "student apis",
+			"item": [
+				{
+					"name": "Add Student ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"xyz\",\n\t\"usn\":\"01FB16ECSXXX\",\n\t\"pwd\":\"@#$%1232\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/student",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"student"
+							]
+						},
+						"description": "This will add the student to student collection in SE DB"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch all Students",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/student",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"student"
+							]
+						},
+						"description": "List all student in student collection"
+					},
+					"response": []
+				},
+				{
+					"name": "Credentials of specific student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/student/5dc677ec4ef9da823acfb5b9",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"5dc677ec4ef9da823acfb5b9"
+							]
+						},
+						"description": "List detail of specific student "
+					},
+					"response": []
+				},
+				{
+					"name": "Delete specific student Details",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/student/5dc677ec4ef9da823acfb5b9",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"5dc677ec4ef9da823acfb5b9"
+							]
+						},
+						"description": "This will delete any specific student whose id passed as parameter"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove all students",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/student",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"student"
+							]
+						},
+						"description": "Removes all student records from student collections"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Student",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"_id\":\"5dc6782c4ef9da823acfb5ba\",\n\t\"name\":\"Gourishankar\",\n\t\"usn\":\"01FB16ECS123\",\n\t\"pwd\":\"@#$%12321\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/student",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"student"
+							]
+						},
+						"description": "This will update the student record "
+					},
+					"response": []
+				},
+				{
+					"name": "Login ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"usn\":\"01FB16ECS124\",\n\t\"password\":\"pbkdf2:sha256:50000$wKk7GNyB$5039b3e7ee2d3ef26c649b4265ad93aa2b16e440b39bcf8c01376e13226e794e\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/student/login",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"login"
+							]
+						},
+						"description": "This api will check for student login"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "course apis",
+			"item": [
+				{
+					"name": "Add course ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"coursename\":\"SE\",\n\t\"coursecode\":\"SE1122\",\n\t\"credits\":\"4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/courses",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses"
+							]
+						},
+						"description": "This will add the course to courses collection SE DB \n"
+					},
+					"response": []
+				},
+				{
+					"name": "List all Courses ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/courses",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses"
+							]
+						},
+						"description": "This will list all the documents of courses collection "
+					},
+					"response": []
+				},
+				{
+					"name": "List any specific Course",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/courses/5dbaf6e735e8937315b27691",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"5dbaf6e735e8937315b27691"
+							]
+						},
+						"description": "This will list any specific course"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all Courses",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/courses",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses"
+							]
+						},
+						"description": "This will remove all documents in Courses collection"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete specific Course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/courses/5dbaf6e735e8937315b27691",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"5dbaf6e735e8937315b27691"
+							]
+						},
+						"description": "This will remove specific Course from courses collection"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Course",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						},
+						"description": "This will update the respective course which passed as parameter"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Faculty apis",
+			"item": [
+				{
+					"name": "Add Faculty",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Badree\",\n\t\"fcode\":\"bd5112\",\n\t\"email\":\"badree@pes.edu\",\n\t\"Dname\":\"Mechanical  Engineering\",\n\t\"pwd\":\"Mebadree\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/faculty",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"faculty"
+							]
+						},
+						"description": "This will add Faculty to faculties collection"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove all Faculties",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/faculty",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"faculty"
+							]
+						},
+						"description": "This remove all Faculties from faculties collection"
+					},
+					"response": []
+				},
+				{
+					"name": "List all Faculties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/faculty",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"faculty"
+							]
+						},
+						"description": "List all Faculties from faculties collection"
+					},
+					"response": []
+				},
+				{
+					"name": "List specific Faculty",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/faculty/5dc686b08a67fad338d96682",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"faculty",
+								"5dc686b08a67fad338d96682"
+							]
+						},
+						"description": "This will list out the details of specific Faculty"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete specific Faculty",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/faculty/5dc6879e8a67fad338d96684",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"faculty",
+								"5dc6879e8a67fad338d96684"
+							]
+						},
+						"description": "This will remove specific Faculty whose id is passed as parameter"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Faculties",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"_id\":\"5dc688504a387c2414b38e8a\",\n\t\"name\":\"Shrkant\",\n\t\"fcode\":\"CC5112\",\n\t\"email\":\"shree@pes.edu\",\n\t\"Dname\":\"Mechanical  Engineering\",\n\t\"pwd\":\"Mebadree\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/v1/faculty",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"faculty"
+							]
+						},
+						"description": "This will update Faculty whose id is passed as parameter"
+					},
+					"response": []
+				},
+				{
+					"name": "Faculty login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fcode\":\"\",\n\t\"password\":\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": ""
+						},
+						"description": "This api is for faculty login"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

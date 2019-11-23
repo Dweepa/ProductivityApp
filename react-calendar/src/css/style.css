@@ -1,0 +1,59 @@
+.form-control::-webkit-input-placeholder {
+  color: black;
+} /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder {
+  color: black;
+} /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder {
+  color: black;
+} /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder {
+  color: black;
+} /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder {
+  color: black;
+} /* Microsoft Edge */
+input[type="text"] {
+  color: black;
+}
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  left: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  border-width: 3px !important;
+}
+
+.sidenav a {
+  text-decoration: none;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  padding: 10px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+    .number-input.def-number-input.safari_only button:before,
+    .number-input.def-number-input.safari_only button:after {
+      margin-top: -0.3rem;
+    }
+  }
+}

@@ -121,13 +121,13 @@ function EventList (props) {
   const data1 = props.data;
   function update(e){
 //    console.log(e);
-//    alert(e);
     fetch("http://127.0.0.1:5004/statusupdate", {method:"PUT",
         headers: {
          'Accept': 'application/json',
          'Content-Type': 'application/json',
          },
-         body:JSON.stringify(e)}).then(res => res.json().then(data1 => {console.log(data1)}));
+         body:JSON.stringify(e)}).then(res => res.json().then(data1 => {console.log(data1);
+    }));
   }
   const listitems = data1.map((number) =>
   <div className='p-0'>

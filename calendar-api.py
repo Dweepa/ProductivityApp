@@ -141,10 +141,6 @@ def getSubmissions(course):
     done = calendar.find({"event.course": course, "status":"done"}).count()
     return jsonify(done)
 
-@app.route('/sentiment', methods=['GET'])
-def sent():
-    # t = os.system("python /Users/dweepa/Documents/SE/Sentiment-Analysis-Twitter/sentiment.py")
-    # return t
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5004, debug=True)
